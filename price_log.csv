@@ -7,4 +7,7 @@ timestamp,let,trasa,datum_letu,aerolinka,odlet,pristatie,prestupy,cena_usd_1os,p
 2026-07-18T00:00,let1,JFK-MIA,2026-08-30,American,20:30,23:50,nonstop,179,ano,baseline
 2026-07-18T00:00,let2,MIA-LAS,2026-09-05,neznama (pravdep. American),20:20,22:30,nonstop,199,ano,baseline
 2026-07-18T00:00,let2,MIA-LAS,2026-09-05,neznama,17:40,21:45,1 prestup,204,neznama,baseline
-2026-07-18T00:00,let2,MIA-LAS,2026-09-05,Southwest,14:15,17:45,1 prestup (AUS),219,ano,baseline
+2026-07-18T00:00,let1,EWR-MIA,2026-08-30,United,20:29,23:44,nonstop,179,nie,baseline
+2026-07-18T00:00,let1,LGA-MIA,2026-08-30,Delta,19:50,23:17,nonstop,194,ano,baseline
+2026-07-18T00:00,let1,EWR-FLL,2026-08-30,JetBlue,20:46,23:55,nonstop,173,ano,baseline
+2026-07-18T00:00,let2,MIA-LAS,2026-09-05,Southwest,14:15,17:45,1 prestup,219,ano,baseline
