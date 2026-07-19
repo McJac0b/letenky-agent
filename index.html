@@ -9,16 +9,16 @@
     --surface-1: #fcfcfb; --page: #f9f9f7;
     --ink-1: #0b0b0b; --ink-2: #52514e; --muted: #898781;
     --grid: #e1e0d9; --baseline: #c3c2b7; --border: rgba(11,11,11,0.10);
-    --s1: #2a78d6; --s2: #1baf7a; --s3: #eda100;
     --good: #006300; --min-bg: rgba(0,131,0,0.12);
+    --c1:#2a78d6; --c2:#1baf7a; --c3:#eda100; --c4:#008300; --c5:#4a3aa7; --c6:#e34948; --c7:#e87ba4; --c8:#eb6834;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --surface-1: #1a1a19; --page: #0d0d0d;
       --ink-1: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
       --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
-      --s1: #3987e5; --s2: #199e70; --s3: #c98500;
       --good: #0ca30c; --min-bg: rgba(12,163,12,0.18);
+      --c1:#3987e5; --c2:#199e70; --c3:#c98500; --c4:#008300; --c5:#9085e9; --c6:#e66767; --c7:#d55181; --c8:#d95926;
     }
   }
   * { box-sizing: border-box; }
@@ -32,19 +32,30 @@
           border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
   .card h2 { font-size: 15px; margin: 0 0 4px; }
   .card .note { color: var(--muted); font-size: 12px; margin: 0 0 14px; }
-  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); margin-bottom: 6px; }
-  .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
   .chartwrap { position: relative; }
   svg { width: 100%; height: auto; display: block; }
   .tip { position: absolute; pointer-events: none; background: var(--surface-1);
          border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
          font-size: 12px; color: var(--ink-1); box-shadow: 0 2px 12px rgba(0,0,0,.14);
-         display: none; min-width: 190px; z-index: 3; }
+         display: none; min-width: 200px; max-width: 280px; z-index: 3; }
   .tip .t { color: var(--muted); margin-bottom: 5px; }
   .tip .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
   .tip .row b { font-variant-numeric: tabular-nums; }
-  .tip .d { color: var(--ink-2); font-size: 11px; margin: 1px 0 5px; }
+  /* filter */
+  .filterbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .qbtn { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 999px; cursor: pointer;
+          border: 1px solid var(--border); background: transparent; color: var(--ink-2); }
+  .qbtn:hover { background: var(--min-bg); }
+  .fsplit { width: 1px; height: 18px; background: var(--grid); margin: 0 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-bottom: 14px; }
+  .chipgroup { font-size: 11px; color: var(--muted); width: 100%; margin: 4px 0 -2px; font-weight: 600; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 3px 9px;
+          border-radius: 999px; border: 1px solid var(--border); cursor: pointer; user-select: none;
+          background: transparent; color: var(--ink-1); }
+  .chip .sw { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+  .chip.off { color: var(--muted); }
+  .chip.off .sw { opacity: 0.25; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: none; }
   .tablescroll { overflow-x: auto; margin: 0 -20px; padding: 0 20px; }
   table { border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; }
   th, td { padding: 7px 12px; border-bottom: 1px solid var(--grid); white-space: nowrap; text-align: right; }
@@ -54,16 +65,17 @@
   thead th.rowhead { z-index: 1; }
   td.min { color: var(--good); font-weight: 700; background: var(--min-bg); }
   td.na { color: var(--muted); }
+  .rhline { display: flex; align-items: center; gap: 7px; }
   .badge { font-weight: 400; font-size: 11px; padding: 1px 6px; border-radius: 10px; margin-left: 8px; border: 1px solid var(--border); }
   .badge.yes { color: var(--good); }
   .badge.no { color: var(--muted); }
   .airline { color: var(--ink-1); }
   .flightno { font-weight: 600; font-size: 11px; color: var(--ink-2); margin-left: 8px; font-variant-numeric: tabular-nums; }
-  .flightsub { color: var(--muted); font-size: 11px; font-weight: 400; }
+  .flightsub { color: var(--muted); font-size: 11px; font-weight: 400; margin-left: 17px; }
   .status { padding: 30px 0; text-align: center; color: var(--muted); font-size: 14px; }
   .empty { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; }
   .updated { color: var(--muted); font-size: 12px; margin-top: 4px; }
-  a { color: var(--s1); }
+  a { color: var(--c1); }
 </style>
 </head>
 <body>
@@ -75,22 +87,23 @@
   </header>
 
   <div class="card">
-    <h2>Vývoj najnižšej ceny na osobu</h2>
-    <p class="note">Najlacnejší let v každej kategórii (bez ohľadu na aerolinku). Prejdi myšou po grafe pre detail.</p>
-    <div class="legend" id="legend"></div>
-    <div class="chartwrap"><svg id="chart" viewBox="0 0 900 380" role="img" aria-label="Graf vývoja cien leteniek"></svg><div class="tip" id="tip"></div></div>
+    <h2>Kolísanie ceny jednotlivých letov</h2>
+    <p class="note">Každá čiara = jeden konkrétny let. Klikni na let nižšie a zapni/vypni ho v grafe. Bez filtra sú zobrazené všetky.</p>
+    <div class="filterbar" id="qfilter"></div>
+    <div class="chips" id="chips"></div>
+    <div class="chartwrap"><svg id="chart" viewBox="0 0 900 400" role="img" aria-label="Graf cien jednotlivých letov"></svg><div class="tip" id="tip"></div></div>
   </div>
 
   <div class="card">
     <h2>Lety do Miami · NYC → MIA / FLL (30. 8. 2026, po 19:00)</h2>
-    <p class="note">Riadok = konkrétny let (aerolinka, čas, trasa). Stĺpec = jeden sken. Najnižšia cena v každom skene je zvýraznená zelenou.</p>
+    <p class="note">Riadok = konkrétny let. Stĺpec = jeden sken. Najnižšia cena v každom skene je zvýraznená zelenou. Farba vľavo zodpovedá grafu.</p>
     <div class="tablescroll"><table id="tbl-mia"></table></div>
     <div class="empty" id="empty-mia" style="display:none">Zatiaľ žiadne dáta.</div>
   </div>
 
   <div class="card">
     <h2>Lety do Las Vegas · MIA → LAS (5. 9. 2026, po 13:00)</h2>
-    <p class="note">Riadok = konkrétny let (aerolinka, čas, trasa). Stĺpec = jeden sken. Najnižšia cena v každom skene je zvýraznená zelenou.</p>
+    <p class="note">Riadok = konkrétny let. Stĺpec = jeden sken. Najnižšia cena v každom skene je zvýraznená zelenou. Farba vľavo zodpovedá grafu.</p>
     <div class="tablescroll"><table id="tbl-las"></table></div>
     <div class="empty" id="empty-las" style="display:none">Zatiaľ žiadne dáta.</div>
   </div>
@@ -100,13 +113,8 @@
 </div>
 
 <script>
-// Kategórie pre graf (label, let, cieľové letisko, nákupný prah/os., farba)
-const CHART_DEF = [
-  { label: "Miami → FLL", let: "let1", dest: "FLL", thr: 100, color: "var(--s1)" },
-  { label: "Miami → MIA", let: "let1", dest: "MIA", thr: 150, color: "var(--s2)" },
-  { label: "Las Vegas → LAS", let: "let2", dest: "LAS", thr: 175, color: "var(--s3)" },
-];
 const CARRYON_YES = new Set(["delta", "jetblue", "american", "southwest", "alaska"]);
+const color = i => "var(--c" + (i % 8 + 1) + ")";
 
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
@@ -120,58 +128,61 @@ function parseCSV(text) {
 
 function build(rows) {
   const tsSet = new Set();
-  const legs = { let1: new Map(), let2: new Map() }; // rowKey -> flight
-  const chartByTs = new Map();
+  const legs = { let1: new Map(), let2: new Map() };
   for (const r of rows) {
     const price = parseFloat(r.cena_usd_1os);
     if (!isFinite(price)) continue;
     const ts = r.timestamp; tsSet.add(ts);
     if (!(r.let in legs)) continue;
-    const key = [r.aerolinka, r.odlet, r.trasa].join("|");
+    const key = [r.let, r.aerolinka, r.odlet, r.trasa].join("|");
     let f = legs[r.let].get(key);
     if (!f) {
-      f = { airline: r.aerolinka || "?", cislo: r.cislo_letu || "", odlet: r.odlet || "", trasa: r.trasa || "",
-            prestupy: r.prestupy || "", carry: (r.prirucna_v_cene || "").toLowerCase() === "ano"
-              ? "ano" : ((r.prirucna_v_cene || "").toLowerCase() === "nie" ? "nie"
+      f = { key, leg: r.let, airline: r.aerolinka || "?", cislo: r.cislo_letu || "", odlet: r.odlet || "",
+            trasa: r.trasa || "", prestupy: r.prestupy || "",
+            carry: (r.prirucna_v_cene || "").toLowerCase() === "ano" ? "ano"
+              : ((r.prirucna_v_cene || "").toLowerCase() === "nie" ? "nie"
               : (CARRYON_YES.has((r.aerolinka || "").toLowerCase()) ? "ano" : "nie")),
             byTs: {} };
       legs[r.let].set(key, f);
     }
     if (!f.cislo && r.cislo_letu) f.cislo = r.cislo_letu;
     if (!(ts in f.byTs) || price < f.byTs[ts]) f.byTs[ts] = price;
-    // graf: min per kategória
-    const dest = (r.trasa || "").split("-").pop();
-    const cd = CHART_DEF.find(c => c.let === r.let && c.dest === dest);
-    if (cd) {
-      if (!chartByTs.has(ts)) chartByTs.set(ts, {});
-      const c = chartByTs.get(ts);
-      const detail = [r.aerolinka, r.odlet, r.trasa, r.prestupy].filter(Boolean).join(" ");
-      if (!(cd.label in c) || price < c[cd.label].y) c[cd.label] = { y: price, d: detail };
-    }
   }
   const timestamps = [...tsSet].sort();
-  const chart = CHART_DEF.map(cd => ({ ...cd, points: timestamps.map(ts => (chartByTs.get(ts) || {})[cd.label] || null) }));
-  const sortFlights = m => [...m.values()].sort((a, b) =>
+  const sortF = m => [...m.values()].sort((a, b) =>
     a.airline.localeCompare(b.airline) || a.odlet.localeCompare(b.odlet) || a.trasa.localeCompare(b.trasa));
-  return { timestamps, chart, mia: sortFlights(legs.let1), las: sortFlights(legs.let2) };
+  const mia = sortF(legs.let1), las = sortF(legs.let2);
+  const flights = [...mia, ...las];
+  flights.forEach((f, i) => {
+    f.color = color(i);
+    f.label = f.airline + " " + f.odlet + " " + f.trasa;
+    f.points = timestamps.map(ts => (ts in f.byTs) ? f.byTs[ts] : null);
+  });
+  return { timestamps, mia, las, flights };
 }
 
 const NS = "http://www.w3.org/2000/svg";
 function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 function fmtShort(ts) { const d = new Date(ts); if (isNaN(d)) return ts; return d.getDate() + "." + (d.getMonth() + 1) + ". " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0"); }
 
-function renderChart(data) {
+let DATA = null;
+const enabled = new Set();     // keys of enabled flights
+
+function renderChart() {
   const svg = document.getElementById("chart"); svg.innerHTML = "";
-  const W = 900, H = 380, M = { t: 16, r: 140, b: 42, l: 48 };
+  const W = 900, H = 400, M = { t: 16, r: 150, b: 42, l: 48 };
   const iw = W - M.l - M.r, ih = H - M.t - M.b;
-  const n = data.timestamps.length;
-  const allY = data.chart.flatMap(s => s.points.filter(Boolean).map(p => p.y)).concat(data.chart.map(s => s.thr));
-  if (!allY.length) return;
+  const ts = DATA.timestamps, n = ts.length;
+  const vis = DATA.flights.filter(f => enabled.has(f.key));
+  const allY = vis.flatMap(f => f.points.filter(v => v != null));
+  if (!allY.length) { el("text", { x: W / 2, y: H / 2, "text-anchor": "middle", "font-size": 13, fill: "var(--muted)" }, svg).textContent = "Vyber aspoň jeden let"; return; }
   let yMin = Math.min(...allY), yMax = Math.max(...allY);
-  const pad = Math.max(10, (yMax - yMin) * 0.12);
+  const pad = Math.max(8, (yMax - yMin) * 0.14);
   yMin = Math.max(0, Math.floor((yMin - pad) / 10) * 10); yMax = Math.ceil((yMax + pad) / 10) * 10;
+  if (yMax === yMin) yMax = yMin + 20;
   const x = i => n === 1 ? M.l + iw / 2 : M.l + i * iw / (n - 1);
   const y = v => M.t + ih - (v - yMin) / (yMax - yMin) * ih;
+
   const step = Math.max(10, Math.ceil((yMax - yMin) / 5 / 10) * 10);
   for (let v = yMin; v <= yMax; v += step) {
     el("line", { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v), stroke: "var(--grid)", "stroke-width": 1 }, svg);
@@ -179,35 +190,75 @@ function renderChart(data) {
   }
   el("line", { x1: M.l, x2: W - M.r, y1: y(yMin), y2: y(yMin), stroke: "var(--baseline)", "stroke-width": 1 }, svg);
   const every = Math.max(1, Math.ceil(n / 8));
-  data.timestamps.forEach((ts, i) => { if (i % every !== 0 && i !== n - 1) return; el("text", { x: x(i), y: H - M.b + 18, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" }, svg).textContent = fmtShort(ts); });
-  data.chart.forEach(s => {
+  ts.forEach((t, i) => { if (i % every !== 0 && i !== n - 1) return; el("text", { x: x(i), y: H - M.b + 18, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" }, svg).textContent = fmtShort(t); });
+
+  // jitter identical prices a touch so overlapping flat lines stay visible
+  vis.forEach(f => {
     let d = "", started = false;
-    s.points.forEach((p, i) => { if (!p) { started = false; return; } d += (started ? " L" : " M") + x(i).toFixed(1) + " " + y(p.y).toFixed(1); started = true; });
-    if (d) el("path", { d, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
-    s.points.forEach((p, i) => { if (p) el("circle", { cx: x(i), cy: y(p.y), r: 3.5, fill: s.color, stroke: "var(--surface-1)", "stroke-width": 2 }, svg); });
-    let last = null; for (let i = n - 1; i >= 0; i--) if (s.points[i]) { last = i; break; }
-    if (last !== null) el("text", { x: x(last) + 10, y: y(s.points[last].y) + 4, "font-size": 12, "font-weight": 600, fill: "var(--ink-1)" }, svg).textContent = "$" + s.points[last].y;
+    f.points.forEach((v, i) => { if (v == null) { started = false; return; } d += (started ? " L" : " M") + x(i).toFixed(1) + " " + y(v).toFixed(1); started = true; });
+    if (d) el("path", { d, fill: "none", stroke: f.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0.95 }, svg);
+    f.points.forEach((v, i) => { if (v != null) el("circle", { cx: x(i), cy: y(v), r: 3, fill: f.color, stroke: "var(--surface-1)", "stroke-width": 1.5 }, svg); });
   });
+  // direct end-labels only when few series visible
+  if (vis.length <= 6) {
+    const placed = [];
+    vis.forEach(f => {
+      let last = null; for (let i = n - 1; i >= 0; i--) if (f.points[i] != null) { last = i; break; }
+      if (last == null) return;
+      let ly = y(f.points[last]);
+      while (placed.some(p => Math.abs(p - ly) < 12)) ly -= 12;
+      placed.push(ly);
+      el("text", { x: x(last) + 8, y: ly + 4, "font-size": 11, "font-weight": 600, fill: f.color }, svg).textContent = "$" + f.points[last] + " " + f.airline;
+    });
+  }
+
   const hover = el("line", { y1: M.t, y2: H - M.b, stroke: "var(--baseline)", "stroke-width": 1, "stroke-dasharray": "3 3", visibility: "hidden" }, svg);
   const tip = document.getElementById("tip"), wrap = svg.parentElement;
   svg.addEventListener("mousemove", ev => {
-    if (n === 0) return;
     const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) * W / r.width;
     let best = 0, bd = 1e9; for (let i = 0; i < n; i++) { const dd = Math.abs(x(i) - px); if (dd < bd) { bd = dd; best = i; } }
     hover.setAttribute("x1", x(best)); hover.setAttribute("x2", x(best)); hover.setAttribute("visibility", "visible");
-    tip.innerHTML = ""; const head = document.createElement("div"); head.className = "t"; head.textContent = fmtShort(data.timestamps[best]); tip.appendChild(head);
-    data.chart.forEach(s => {
-      const p = s.points[best]; if (!p) return;
+    tip.innerHTML = ""; const head = document.createElement("div"); head.className = "t"; head.textContent = fmtShort(ts[best]); tip.appendChild(head);
+    const rowsV = vis.filter(f => f.points[best] != null).sort((a, b) => a.points[best] - b.points[best]);
+    if (!rowsV.length) { const d = document.createElement("div"); d.className = "t"; d.textContent = "bez dát"; tip.appendChild(d); }
+    rowsV.forEach(f => {
       const row = document.createElement("div"); row.className = "row";
-      const left = document.createElement("span"); const sw = document.createElement("span"); sw.className = "swatch"; sw.style.background = s.color; left.appendChild(sw); left.appendChild(document.createTextNode(" " + s.label));
-      const val = document.createElement("b"); val.textContent = "$" + p.y; row.appendChild(left); row.appendChild(val); tip.appendChild(row);
-      const det = document.createElement("div"); det.className = "d"; det.textContent = p.d; tip.appendChild(det);
+      const left = document.createElement("span"); const sw = document.createElement("span"); sw.className = "swatch"; sw.style.background = f.color; sw.style.marginRight = "6px"; left.appendChild(sw);
+      left.appendChild(document.createTextNode(f.airline + " " + f.odlet + " " + f.trasa));
+      const val = document.createElement("b"); val.textContent = "$" + f.points[best];
+      row.appendChild(left); row.appendChild(val); tip.appendChild(row);
     });
     tip.style.display = "block";
     const wr = wrap.getBoundingClientRect(); const lx = (x(best) / W) * wr.width;
-    tip.style.left = Math.min(wr.width - 200, Math.max(0, lx + 12)) + "px"; tip.style.top = "16px";
+    tip.style.left = Math.min(wr.width - 210, Math.max(0, lx + 12)) + "px"; tip.style.top = "14px";
   });
   svg.addEventListener("mouseleave", () => { tip.style.display = "none"; hover.setAttribute("visibility", "hidden"); });
+}
+
+function renderChips() {
+  const box = document.getElementById("chips"); box.innerHTML = "";
+  const groups = [["Lety do Miami", DATA.mia], ["Lety do Las Vegas", DATA.las]];
+  groups.forEach(([title, list]) => {
+    if (!list.length) return;
+    const h = document.createElement("div"); h.className = "chipgroup"; h.textContent = title; box.appendChild(h);
+    list.forEach(f => {
+      const chip = document.createElement("button"); chip.className = "chip" + (enabled.has(f.key) ? "" : " off");
+      const sw = document.createElement("span"); sw.className = "sw"; sw.style.background = f.color; chip.appendChild(sw);
+      chip.appendChild(document.createTextNode(f.airline + " " + f.odlet + " " + f.trasa));
+      chip.onclick = () => { if (enabled.has(f.key)) enabled.delete(f.key); else enabled.add(f.key); renderChips(); renderChart(); };
+      box.appendChild(chip);
+    });
+  });
+}
+
+function renderQuick() {
+  const bar = document.getElementById("qfilter"); bar.innerHTML = "";
+  const mk = (label, fn) => { const b = document.createElement("button"); b.className = "qbtn"; b.textContent = label; b.onclick = () => { fn(); renderChips(); renderChart(); }; return b; };
+  bar.appendChild(mk("Všetky", () => DATA.flights.forEach(f => enabled.add(f.key))));
+  bar.appendChild(mk("Žiadne", () => enabled.clear()));
+  const sp = document.createElement("span"); sp.className = "fsplit"; bar.appendChild(sp);
+  bar.appendChild(mk("Len Miami", () => { enabled.clear(); DATA.mia.forEach(f => enabled.add(f.key)); }));
+  bar.appendChild(mk("Len Las Vegas", () => { enabled.clear(); DATA.las.forEach(f => enabled.add(f.key)); }));
 }
 
 function renderPivot(tableId, emptyId, flights, timestamps) {
@@ -215,27 +266,24 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
   const empty = document.getElementById(emptyId);
   if (!flights.length) { table.style.display = "none"; empty.style.display = "block"; return; }
   table.style.display = ""; empty.style.display = "none";
-  // min cena na stĺpec (najlacnejší let v danom skene)
   const colMin = timestamps.map(ts => { let m = Infinity; flights.forEach(f => { if (ts in f.byTs) m = Math.min(m, f.byTs[ts]); }); return m; });
-
   const thead = document.createElement("thead"); const htr = document.createElement("tr");
   const corner = document.createElement("th"); corner.className = "rowhead"; corner.textContent = "Let"; htr.appendChild(corner);
   timestamps.forEach(ts => { const th = document.createElement("th"); th.textContent = fmtShort(ts); htr.appendChild(th); });
   thead.appendChild(htr); table.appendChild(thead);
-
   const tbody = document.createElement("tbody");
   flights.forEach(f => {
     const tr = document.createElement("tr");
     const rh = document.createElement("td"); rh.className = "rowhead";
-    const al = document.createElement("span"); al.className = "airline"; al.textContent = f.airline;
-    rh.appendChild(al);
-    if (f.cislo) { const fn = document.createElement("span"); fn.className = "flightno"; fn.textContent = f.cislo; rh.appendChild(fn); }
+    const line = document.createElement("div"); line.className = "rhline";
+    const sw = document.createElement("span"); sw.className = "swatch"; sw.style.background = f.color; line.appendChild(sw);
+    const al = document.createElement("span"); al.className = "airline"; al.textContent = f.airline; line.appendChild(al);
+    if (f.cislo) { const fn = document.createElement("span"); fn.className = "flightno"; fn.textContent = f.cislo; line.appendChild(fn); }
     const badge = document.createElement("span"); badge.className = "badge " + (f.carry === "ano" ? "yes" : "no");
-    badge.textContent = f.carry === "ano" ? "batožina v cene" : "bez batožiny";
-    rh.appendChild(badge);
+    badge.textContent = f.carry === "ano" ? "batožina v cene" : "bez batožiny"; line.appendChild(badge);
+    rh.appendChild(line);
     const sub = document.createElement("div"); sub.className = "flightsub";
-    sub.textContent = [f.odlet, f.trasa, f.prestupy].filter(Boolean).join(" · ");
-    rh.appendChild(sub);
+    sub.textContent = [f.odlet, f.trasa, f.prestupy].filter(Boolean).join(" · "); rh.appendChild(sub);
     tr.appendChild(rh);
     timestamps.forEach((ts, ci) => {
       const td = document.createElement("td");
@@ -251,15 +299,14 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
 fetch("price_log.csv?" + Date.now())
   .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
   .then(text => {
-    const data = build(parseCSV(text));
+    DATA = build(parseCSV(text));
     document.getElementById("status").style.display = "none";
-    const legend = document.getElementById("legend");
-    data.chart.forEach(s => { const sp = document.createElement("span"); const sw = document.createElement("span"); sw.className = "swatch"; sw.style.background = s.color; sp.appendChild(sw); sp.appendChild(document.createTextNode(s.label)); legend.appendChild(sp); });
-    if (data.timestamps.length === 0) { document.getElementById("status").style.display = "block"; document.getElementById("status").textContent = "Zatiaľ žiadne dáta — naplní sa po prvých skenoch."; return; }
-    document.getElementById("updated").textContent = "Posledný sken: " + fmtShort(data.timestamps[data.timestamps.length - 1]) + " · " + data.timestamps.length + " skenov";
-    renderChart(data);
-    renderPivot("tbl-mia", "empty-mia", data.mia, data.timestamps);
-    renderPivot("tbl-las", "empty-las", data.las, data.timestamps);
+    if (DATA.timestamps.length === 0) { const s = document.getElementById("status"); s.style.display = "block"; s.textContent = "Zatiaľ žiadne dáta — naplní sa po prvých skenoch."; return; }
+    document.getElementById("updated").textContent = "Posledný sken: " + fmtShort(DATA.timestamps[DATA.timestamps.length - 1]) + " · " + DATA.timestamps.length + " skenov · " + DATA.flights.length + " sledovaných letov";
+    DATA.flights.forEach(f => enabled.add(f.key));   // bez filtra = všetko
+    renderQuick(); renderChips(); renderChart();
+    renderPivot("tbl-mia", "empty-mia", DATA.mia, DATA.timestamps);
+    renderPivot("tbl-las", "empty-las", DATA.las, DATA.timestamps);
   })
   .catch(e => { const st = document.getElementById("status"); st.style.display = "block"; st.textContent = "Dáta sa nepodarilo načítať (" + e.message + "). Otvor stránku cez GitHub Pages, nie ako lokálny súbor."; });
 </script>
