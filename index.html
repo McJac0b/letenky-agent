@@ -72,6 +72,16 @@
   .airline { color: var(--ink-1); }
   .flightno { font-weight: 600; font-size: 11px; color: var(--ink-2); margin-left: 8px; font-variant-numeric: tabular-nums; }
   .flightsub { color: var(--muted); font-size: 11px; font-weight: 400; margin-left: 17px; }
+  td.rowhead.expandable { cursor: pointer; }
+  td.rowhead.expandable:hover { background: var(--min-bg); }
+  .caret { color: var(--muted); font-size: 10px; width: 11px; display: inline-block; flex: none; transition: transform .12s; }
+  tr.detailrow td { background: color-mix(in srgb, var(--surface-1) 92%, var(--ink-2)); text-align: left; white-space: normal; position: static; }
+  .detailbox { padding: 4px 2px; }
+  .droute { font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+  .dgrid { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-size: 12px; max-width: 560px; }
+  .dgrid .dk { color: var(--muted); }
+  .dgrid .dv { color: var(--ink-1); }
+  .dlink { display: inline-block; margin-top: 10px; font-size: 12px; }
   .status { padding: 30px 0; text-align: center; color: var(--muted); font-size: 14px; }
   .empty { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; }
   .updated { color: var(--muted); font-size: 12px; margin-top: 4px; }
@@ -138,7 +148,8 @@ function build(rows) {
     let f = legs[r.let].get(key);
     if (!f) {
       f = { key, leg: r.let, airline: r.aerolinka || "?", cislo: r.cislo_letu || "", odlet: r.odlet || "",
-            trasa: r.trasa || "", prestupy: r.prestupy || "",
+            pristatie: r.pristatie || "", trasa: r.trasa || "", prestupy: r.prestupy || "",
+            detail: r.detail || "", date: r.datum_letu || "",
             carry: (r.prirucna_v_cene || "").toLowerCase() === "ano" ? "ano"
               : ((r.prirucna_v_cene || "").toLowerCase() === "nie" ? "nie"
               : (CARRYON_YES.has((r.aerolinka || "").toLowerCase()) ? "ano" : "nie")),
@@ -146,6 +157,8 @@ function build(rows) {
       legs[r.let].set(key, f);
     }
     if (!f.cislo && r.cislo_letu) f.cislo = r.cislo_letu;
+    if (!f.detail && r.detail) f.detail = r.detail;
+    if (!f.pristatie && r.pristatie) f.pristatie = r.pristatie;
     if (!(ts in f.byTs) || price < f.byTs[ts]) f.byTs[ts] = price;
   }
   const timestamps = [...tsSet].sort();
@@ -275,8 +288,9 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
   const tbody = document.createElement("tbody");
   flights.forEach(f => {
     const tr = document.createElement("tr");
-    const rh = document.createElement("td"); rh.className = "rowhead";
+    const rh = document.createElement("td"); rh.className = "rowhead expandable";
     const line = document.createElement("div"); line.className = "rhline";
+    const caret = document.createElement("span"); caret.className = "caret"; caret.textContent = "▸"; line.appendChild(caret);
     const sw = document.createElement("span"); sw.className = "swatch"; sw.style.background = f.color; line.appendChild(sw);
     const al = document.createElement("span"); al.className = "airline"; al.textContent = f.airline; line.appendChild(al);
     if (f.cislo) { const fn = document.createElement("span"); fn.className = "flightno"; fn.textContent = f.cislo; line.appendChild(fn); }
@@ -284,7 +298,7 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
     badge.textContent = f.carry === "ano" ? "batožina v cene" : "bez batožiny"; line.appendChild(badge);
     rh.appendChild(line);
     const sub = document.createElement("div"); sub.className = "flightsub";
-    sub.textContent = [f.odlet, f.trasa, f.prestupy].filter(Boolean).join(" · "); rh.appendChild(sub);
+    sub.textContent = [f.odlet + "–" + f.pristatie, f.trasa, f.prestupy].filter(Boolean).join(" · "); rh.appendChild(sub);
     tr.appendChild(rh);
     timestamps.forEach((ts, ci) => {
       const td = document.createElement("td");
@@ -293,8 +307,37 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
+
+    const dtr = document.createElement("tr"); dtr.className = "detailrow"; dtr.style.display = "none";
+    const dtd = document.createElement("td"); dtd.colSpan = timestamps.length + 1;
+    dtd.appendChild(buildDetail(f, timestamps)); dtr.appendChild(dtd); tbody.appendChild(dtr);
+    rh.onclick = () => { const open = dtr.style.display !== "none"; dtr.style.display = open ? "none" : ""; caret.textContent = open ? "▸" : "▾"; };
   });
   table.appendChild(tbody);
+}
+
+function buildDetail(f, timestamps) {
+  const wrap = document.createElement("div"); wrap.className = "detailbox";
+  const parts = (f.trasa || "").split("-"); const from = parts[0] || "?", to = parts[1] || "?";
+  const route = document.createElement("div"); route.className = "droute";
+  route.textContent = f.airline + " · " + from + " → " + to; wrap.appendChild(route);
+  const g = document.createElement("div"); g.className = "dgrid";
+  const add = (k, v) => { if (!v) return; const kk = document.createElement("span"); kk.className = "dk"; kk.textContent = k; const vv = document.createElement("span"); vv.className = "dv"; vv.textContent = v; g.appendChild(kk); g.appendChild(vv); };
+  add("Odlet", f.odlet ? f.odlet + " · " + from : "");
+  add("Prílet", f.pristatie ? f.pristatie + " · " + to : "");
+  const isNon = /nonstop|priamy/i.test(f.prestupy) || !f.prestupy;
+  add("Prestup", isNon ? "priamy let (nonstop)" : (f.prestupy + (f.detail ? " · " + f.detail : "")));
+  add("Batožina", f.carry === "ano" ? "príručná v cene" : "bez príručnej (Basic)");
+  if (f.cislo) add("Číslo letu", f.cislo);
+  let lp = null, lts = null; for (let i = timestamps.length - 1; i >= 0; i--) { if (timestamps[i] in f.byTs) { lp = f.byTs[timestamps[i]]; lts = timestamps[i]; break; } }
+  if (lp != null) add("Najnovšia cena", "$" + lp + " / os · " + fmtShort(lts));
+  wrap.appendChild(g);
+  if (from !== "?" && to !== "?" && f.date) {
+    const a = document.createElement("a"); a.className = "dlink"; a.target = "_blank"; a.rel = "noopener";
+    a.href = "https://www.google.com/travel/flights?q=" + encodeURIComponent("one way flights from " + from + " to " + to + " on " + f.date + " for 4 passengers");
+    a.textContent = "Pozri rozpis segmentov na Google Flights ↗"; wrap.appendChild(a);
+  }
+  return wrap;
 }
 
 fetch("price_log.csv?" + Date.now())
