@@ -35,6 +35,10 @@ Poznámky z 18. 7. 2026 (cloud scan, večer):
 - Let 1 MIA aj FLL: ceny stabilné, žiadna zmena voči doterajším minimám ($179 MIA nonstop na LGA/JFK/EWR, $124 JFK-FLL JetBlue večer). Predošlé minimum $109 (EWR-FLL United 20:37) sa dnes medzi top výsledkami nezobrazilo — Google Flights vracia len obmedzený výber, nemusí to znamenať skutočný nárast ceny danej konkrétnej letenky.
 - Let 2: NOVÉ MINIMUM $170 (Southwest 17:10 MIA–LAS, 2 prestupy) — pod nákupným prahom $175!
 
+Poznámky z 19. 7. 2026 (cloud scan, ráno, fast-flights cez priamy HTTP fetch — primp/proxy TLS zlyhával):
+- Let 1: bez zmeny, ceny zodpovedajú doterajším minimám ($179 MIA nonstop, $124 JFK-FLL JetBlue večer). $109 EWR-FLL stále mimo top výsledkov.
+- Let 2: potvrdené $170 Southwest 17:10 (2 prestupy), stále pod prahom $175 — bez nového minima.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.

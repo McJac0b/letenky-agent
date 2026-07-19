@@ -33,3 +33,14 @@ timestamp,let,trasa,datum_letu,aerolinka,cislo_letu,odlet,pristatie,prestupy,cen
 2026-07-18T21:59,let2,MIA-LAS,2026-09-05,Southwest,,17:10,22:55,2 prestupy,170,ano,cloud
 2026-07-18T21:59,let2,MIA-LAS,2026-09-05,United,,16:58,22:55,1 prestup,203,nie,cloud
 2026-07-18T21:59,let2,MIA-LAS,2026-09-05,American,,17:40,21:45,1 prestup,203,ano,cloud
+2026-07-19T04:17,let1,JFK-MIA,2026-08-30,American,,20:30,23:50,nonstop,179,ano,cloud
+2026-07-19T04:17,let1,JFK-FLL,2026-08-30,JetBlue,,20:00,23:23,nonstop,124,ano,cloud
+2026-07-19T04:17,let1,LGA-MIA,2026-08-30,American,,19:29,22:45,nonstop,179,ano,cloud
+2026-07-19T04:17,let1,LGA-FLL,2026-08-30,Delta,,19:29,22:52,nonstop,139,ano,cloud
+2026-07-19T04:17,let1,LGA-FLL,2026-08-30,JetBlue,,20:50,23:59,nonstop,173,ano,cloud
+2026-07-19T04:17,let1,EWR-MIA,2026-08-30,United,,20:29,23:44,nonstop,179,nie,cloud
+2026-07-19T04:17,let1,EWR-FLL,2026-08-30,JetBlue,,20:46,23:55,nonstop,173,ano,cloud
+2026-07-19T04:17,let2,MIA-LAS,2026-09-05,Southwest,,17:10,22:55,2 prestupy,170,ano,cloud
+2026-07-19T04:17,let2,MIA-LAS,2026-09-05,United,,16:58,22:55,1 prestup,203,nie,cloud
+2026-07-19T04:17,let2,MIA-LAS,2026-09-05,American,,17:40,21:45,1 prestup,203,ano,cloud
+2026-07-19T04:17,let2,MIA-LAS,2026-09-05,Southwest,,17:10,22:05,1 prestup,243,ano,cloud
