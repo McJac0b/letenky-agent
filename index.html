@@ -58,6 +58,7 @@
   .badge.yes { color: var(--good); }
   .badge.no { color: var(--muted); }
   .airline { color: var(--ink-1); }
+  .flightno { font-weight: 600; font-size: 11px; color: var(--ink-2); margin-left: 8px; font-variant-numeric: tabular-nums; }
   .flightsub { color: var(--muted); font-size: 11px; font-weight: 400; }
   .status { padding: 30px 0; text-align: center; color: var(--muted); font-size: 14px; }
   .empty { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; }
@@ -129,13 +130,14 @@ function build(rows) {
     const key = [r.aerolinka, r.odlet, r.trasa].join("|");
     let f = legs[r.let].get(key);
     if (!f) {
-      f = { airline: r.aerolinka || "?", odlet: r.odlet || "", trasa: r.trasa || "",
+      f = { airline: r.aerolinka || "?", cislo: r.cislo_letu || "", odlet: r.odlet || "", trasa: r.trasa || "",
             prestupy: r.prestupy || "", carry: (r.prirucna_v_cene || "").toLowerCase() === "ano"
               ? "ano" : ((r.prirucna_v_cene || "").toLowerCase() === "nie" ? "nie"
               : (CARRYON_YES.has((r.aerolinka || "").toLowerCase()) ? "ano" : "nie")),
             byTs: {} };
       legs[r.let].set(key, f);
     }
+    if (!f.cislo && r.cislo_letu) f.cislo = r.cislo_letu;
     if (!(ts in f.byTs) || price < f.byTs[ts]) f.byTs[ts] = price;
     // graf: min per kategória
     const dest = (r.trasa || "").split("-").pop();
@@ -227,6 +229,7 @@ function renderPivot(tableId, emptyId, flights, timestamps) {
     const rh = document.createElement("td"); rh.className = "rowhead";
     const al = document.createElement("span"); al.className = "airline"; al.textContent = f.airline;
     rh.appendChild(al);
+    if (f.cislo) { const fn = document.createElement("span"); fn.className = "flightno"; fn.textContent = f.cislo; rh.appendChild(fn); }
     const badge = document.createElement("span"); badge.className = "badge " + (f.carry === "ano" ? "yes" : "no");
     badge.textContent = f.carry === "ano" ? "batožina v cene" : "bez batožiny";
     rh.appendChild(badge);
