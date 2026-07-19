@@ -195,7 +195,8 @@ function renderChart() {
   // jitter identical prices a touch so overlapping flat lines stay visible
   vis.forEach(f => {
     let d = "", started = false;
-    f.points.forEach((v, i) => { if (v == null) { started = false; return; } d += (started ? " L" : " M") + x(i).toFixed(1) + " " + y(v).toFixed(1); started = true; });
+    // spoj čiaru aj cez chýbajúce skeny (bodky len na reálnych dátach)
+    f.points.forEach((v, i) => { if (v == null) return; d += (started ? " L" : " M") + x(i).toFixed(1) + " " + y(v).toFixed(1); started = true; });
     if (d) el("path", { d, fill: "none", stroke: f.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0.95 }, svg);
     f.points.forEach((v, i) => { if (v != null) el("circle", { cx: x(i), cy: y(v), r: 3, fill: f.color, stroke: "var(--surface-1)", "stroke-width": 1.5 }, svg); });
   });
