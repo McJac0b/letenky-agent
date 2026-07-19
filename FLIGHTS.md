@@ -24,7 +24,7 @@
 | Metrika | Cena/os. | Detail | Zistené |
 |---|---|---|---|
 | Let 1 → FLL po 19:00 (najlacnejší celkovo) | $109 | United 20:37 EWR–FLL nonstop | 2026-07-18 |
-| Let 1 → MIA po 19:00 (najlacnejší celkovo) | $179 | American 19:29 LGA–MIA nonstop (aj 20:30 JFK–MIA) | 2026-07-18 |
+| Let 1 → MIA po 19:00 (najlacnejší celkovo) | $178 | American 19:29 LGA–MIA nonstop (aj 20:30 JFK–MIA, aj United 20:29 EWR–MIA) | 2026-07-19 |
 | Let 2 MIA→LAS po 13:00 (najlacnejší celkovo) | $170 | Southwest 17:10–22:55, 2 prestupy | 2026-07-18 |
 
 Poznámky z 18. 7. 2026:
@@ -50,6 +50,10 @@ Poznámky z 19. 7. 2026 (cloud scan, doobeda, fast-flights get_flights zlyhával
 Poznámky z 19. 7. 2026 (cloud scan, poludnie, rovnaký obchádzací spôsob):
 - Let 1: bez zmeny. Najlacnejší MIA nonstop $179 (American JFK 20:30, American LGA 19:29, United EWR 20:29), najlacnejší FLL $139 (Delta LGA 19:29 nonstop). JFK-FLL večerný let sa dnes v top výsledkoch vôbec nezobrazil.
 - Let 2: bez zmeny, najlacnejší $175 (American MIA 22:14, 2 prestupy) — stále nad prahom $175.
+
+Poznámky z 19. 7. 2026 (cloud scan, popoludnie, fast-flights get_flights zlyhával cez primp/proxy — použitý workaround: `requests` s REQUESTS_CA_BUNDLE + `fast_flights.parser.parse()` na base URL `/travel/flights`, nie `/search`):
+- Let 1: NOVÉ MINIMUM $178 na MIA nonstop (American JFK 20:30, American LGA 19:29, United EWR 20:29) — o $1 nižšie ako doterajšie $179. Najlacnejší FLL večerný $138 (Delta LGA 19:29 nonstop), pod doterajším minimom $109 (EWR-FLL) sa dnes nedostal. JFK-FLL trasa dnes opakovane vracala chybu "unsupported" z Google Flights, vynechaná (pokrytie zvyšnými 5 kombináciami dostatočné).
+- Let 2: bez zmeny, najlacnejší $175 (American MIA 22:14, 2 prestupy) — presne na hranici prahu $175, bez nového minima.
 
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
