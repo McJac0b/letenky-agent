@@ -17,15 +17,17 @@
 ## Let 2: Miami → Las Vegas
 - Dátum: **sobota 5. 9. 2026**
 - Odlet: **po 13:00** (cca)
-- Letiská: MIA → LAS
-- URL: https://www.google.com/travel/flights?q=one%20way%20flights%20from%20MIA%20to%20Las%20Vegas%20on%202026-09-05%20for%204%20passengers
+- Letiská odlet: **MIA aj FLL** (Fort Lauderdale) — lacné lety do Vegas idú často z FLL; keďže na leg 1 sa často prilieta na FLL, je to prirodzené. Vždy sledovať oboje.
+- Letiská prílet: LAS
+- URL (Miami metro = MIA aj FLL): https://www.google.com/travel/flights?q=one%20way%20flights%20from%20Miami%20to%20Las%20Vegas%20on%202026-09-05%20for%204%20passengers
 
 ## Doterajšie minimá — ceny na 1 osobu (aktualizovať pri každom novom minime)
 | Metrika | Cena/os. | Detail | Zistené |
 |---|---|---|---|
 | Let 1 → FLL po 19:00 (najlacnejší celkovo) | $109 | United 20:37 EWR–FLL nonstop | 2026-07-18 |
 | Let 1 → MIA po 19:00 (najlacnejší celkovo) | $178 | American 19:29 LGA–MIA nonstop (aj 20:30 JFK–MIA, aj United 20:29 EWR–MIA) | 2026-07-19 |
-| Let 2 MIA→LAS po 13:00 (najlacnejší celkovo) | $170 | Southwest 17:10–22:55, 2 prestupy | 2026-07-18 |
+| Let 2 → LAS po 13:00 (najlacnejší celkovo) | $140 | Frontier 15:00 FLL–LAS, 1 prestup (Basic, bez batožiny, ~11 h) | 2026-07-19 |
+| Let 2 → LAS po 13:00 (najlacnejší nonstop) | $194 | American 20:20 MIA–LAS; JetBlue 16:15 FLL–LAS | 2026-07-19 |
 
 Poznámky z 18. 7. 2026:
 - Let 1: Google price insights: „ceny sú typické, najlacnejšie býva rezervovať do 16. 8."
