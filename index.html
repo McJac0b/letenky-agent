@@ -62,7 +62,9 @@
   thead th { color: var(--muted); font-weight: 600; font-size: 11px; border-bottom: 1px solid var(--baseline); }
   th.rowhead, td.rowhead { text-align: left; position: sticky; left: 0; background: var(--surface-1);
            font-weight: 600; box-shadow: 1px 0 0 var(--grid); }
-  thead th.rowhead { z-index: 1; }
+  tbody td.rowhead { z-index: 2; }
+  thead th.rowhead { z-index: 3; }
+  tbody td:not(.rowhead), thead th:not(.rowhead) { position: relative; z-index: 1; }
   td.min { color: var(--good); font-weight: 700; background: var(--min-bg); }
   td.na { color: var(--muted); }
   .rhline { display: flex; align-items: center; gap: 7px; }
