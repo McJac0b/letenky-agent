@@ -61,6 +61,10 @@ Poznámky z 19. 7. 2026 (cloud scan, popoludnie, requests+CA bundle + fast_fligh
 - Let 1: bez zmeny. Najlacnejší MIA nonstop $178 (American JFK 20:30, American LGA 19:29, United EWR 20:29 — všetky zhodne), najlacnejší FLL $124 (JetBlue JFK 20:00 nonstop). $109 EWR-FLL sa dnes v top výsledkoch opäť nezobrazilo.
 - Let 2: bez zmeny, najlacnejší $175 (American MIA 22:14, 2 prestupy) — presne na hranici prahu $175, bez nového minima.
 
+Poznámky z 20. 7. 2026 (cloud scan, requests+CA bundle + fast_flights.parser.parse(), fungovalo priamo bez chýb):
+- Let 1: bez zmeny. Najlacnejší MIA nonstop $178 (American JFK/LGA, United EWR), najlacnejší FLL $124 (JetBlue JFK 20:00 nonstop). $109 EWR-FLL sa dnes v top výsledkoch opäť nezobrazilo.
+- Let 2: bez zmeny na celkovom minime $140 (Frontier FLL 15:00, 1 prestup). Nové: FLL-LAS aj cez United/American/Southwest/Delta (1 prestup) za $169/os — pod prahom $175, ale nad doterajším minimom $140. Najlacnejší nonstop stále $194.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
