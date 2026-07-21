@@ -129,6 +129,10 @@ Poznámky z 21. 7. 2026 (cloud scan, dopoludnie #2, requests+CA bundle+CONSENT c
 - Let 1: bez zmeny. Najlacnejší MIA nonstop $178 (American JFK 20:30, American LGA 19:29, United EWR 20:29), najlacnejší FLL $124 (JetBlue JFK 20:00 nonstop). $109 EWR-FLL sa dnes opäť nezobrazilo.
 - Let 2: bez zmeny na celkovom minime $136 (Frontier FLL 15:00, 1 prestup cez ATL 4h34) — stále pod prahom $175. Najlacnejší nonstop $194 (American MIA 20:20). Najlacnejší MIA-LAS $175 (American, 2 prestupy cez IAH a DFW). Zapísaných 16 letov (8× let1, 8× let2).
 
+Poznámky z 21. 7. 2026 (cloud scan, ráno #3 — OPRAVA METÓDY FETCHU): doteraz sa $109 United EWR-FLL 20:37 nedarilo zachytiť, lebo scany používali fast_flights.get_flights(seat="economy"), ktorá v Google Flights vylučuje Basic Economy tarify. Dnes prvýkrát fetchnuté priamo cez requests + CONSENT cookie na tú istú URL ako prehliadač (`/travel/flights?q=one way flights from New York to Miami on 2026-08-30 for 4 passengers`, jeden spoločný dotaz pre celé letisková metro NY→Miami namiesto 6 samostatných párov — Google aj tak ignoruje konkrétne mesto/letisko v texte v rámci metra a vracia identickú širokú množinu, takže 1 dotaz na let stačí), parsované cez fast_flights.parser.parse(). VÝSLEDOK: $109 United EWR-FLL 20:37 sa dnes ZACHYTILO ✅ — potvrdzuje, že Basic Economy tarify teraz prechádzajú. Podobne pre let 2 stačí 1 dotaz "Miami to Las Vegas" (MIA aj FLL sú v ňom zahrnuté).
+- Let 1: bez zmeny voči minimám. Najlacnejší FLL $109 (United EWR 20:37, nonstop) — zhoda s doterajším minimom. Najlacnejší MIA $179 (American JFK/LGA, United EWR).
+- Let 2: bez zmeny voči minimu $136 (Frontier FLL 15:00, 1 prestup cez ATL). Najlacnejší nonstop $194 (American MIA, JetBlue FLL). Zapísaných 19 letov (11× let1, 8× let2).
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
