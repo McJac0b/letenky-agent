@@ -133,6 +133,10 @@ Poznámky z 21. 7. 2026 (cloud scan, ráno #3 — OPRAVA METÓDY FETCHU): dotera
 - Let 1: bez zmeny voči minimám. Najlacnejší FLL $109 (United EWR 20:37, nonstop) — zhoda s doterajším minimom. Najlacnejší MIA $179 (American JFK/LGA, United EWR).
 - Let 2: bez zmeny voči minimu $136 (Frontier FLL 15:00, 1 prestup cez ATL). Najlacnejší nonstop $194 (American MIA, JetBlue FLL). Zapísaných 19 letov (11× let1, 8× let2).
 
+Poznámky z 21. 7. 2026 (cloud scan, ráno #4 — POTVRDENÁ OPRAVA METÓDY): overené, že úzke dotazy na konkrétny pár letísk (napr. „EWR to FLL") vracajú menej výsledkov a strácajú Basic Economy tarify (test: EWR-FLL úzky dotaz nezachytil United 20:37 $109, iba $434 o 7:00 ráno). Širší dotaz na metro („New York to Miami" / „Miami to Las Vegas") spoľahlivo zachytáva všetky letiská aj Basic tarify v rámci 1–2 fetchov — použité aj dnes namiesto 8 samostatných dotazov.
+- Let 1: bez zmeny. $109 United EWR-FLL 20:37 ZACHYTENÉ ✅ (zhoda s minimom). Najlacnejší MIA $179 (American JFK/LGA, United EWR), najlacnejší FLL $109. Zapísaných 19 letov, všetky zodpovedajú registru.
+- Let 2: bez zmeny na minime $136 (Frontier FLL 15:00, 1 prestup cez ATL) — stále pod prahom $175.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
