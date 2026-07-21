@@ -26,7 +26,7 @@
 |---|---|---|---|
 | Let 1 → FLL po 19:00 (najlacnejší celkovo) | $109 | United 20:37 EWR–FLL nonstop | 2026-07-18 |
 | Let 1 → MIA po 19:00 (najlacnejší celkovo) | $178 | American 19:29 LGA–MIA nonstop (aj 20:30 JFK–MIA, aj United 20:29 EWR–MIA) | 2026-07-19 |
-| Let 2 → LAS po 13:00 (najlacnejší celkovo) | $140 | Frontier 15:00 FLL–LAS, 1 prestup (Basic, bez batožiny, ~11 h) | 2026-07-19 |
+| Let 2 → LAS po 13:00 (najlacnejší celkovo) | $136 | Frontier 15:00 FLL–LAS, 1 prestup cez ATL 4h34 (Basic, bez batožiny) | 2026-07-21 |
 | Let 2 → LAS po 13:00 (najlacnejší nonstop) | $194 | American 20:20 MIA–LAS; JetBlue 16:15 FLL–LAS | 2026-07-19 |
 
 Poznámky z 18. 7. 2026:
@@ -112,6 +112,10 @@ Poznámky z 20. 7. 2026 (cloud scan, noc, requests+CA bundle+CONSENT cookie + fa
 Poznámky z 21. 7. 2026 (cloud scan, noc, requests+CA bundle+CONSENT cookie + fast-flights 3.0.2 create_query/parser.parse()):
 - Let 1: bez zmeny. Najlacnejší MIA nonstop $178 (American JFK 20:30, American LGA 19:29, United EWR 20:29), najlacnejší FLL $124 (JetBlue JFK 20:00 nonstop). $109 EWR-FLL sa dnes opäť nezobrazilo.
 - Let 2: bez zmeny na celkovom minime $140 (Frontier FLL 15:00, 1 prestup cez ATL, stále pod prahom $175). Najlacnejší nonstop $194 (American MIA 20:20). Najlacnejší MIA-LAS $175 (American, 2 prestupy cez IAH a DFW). Zapísaných 18 letov (7× let1, 11× let2).
+
+Poznámky z 21. 7. 2026 (cloud scan, skoro ráno, requests+CA bundle+CONSENT cookie + fast-flights 3.0.2 create_query/parser.parse()):
+- Let 1: bez zmeny. Najlacnejší MIA nonstop $178 (American JFK 20:30, American LGA 19:29), najlacnejší FLL $124 (JetBlue JFK 20:00 nonstop). $109 EWR-FLL sa dnes opäť nezobrazilo.
+- Let 2: NOVÉ MINIMUM $136 (Frontier FLL 15:00, 1 prestup cez ATL 4h34) — pod doterajším minimom $140 aj pod prahom $175. Ostatné MIA/FLL-LAS 1-prestupové lety $169–$203 (American, Southwest, Delta, United), Southwest MIA 17:10 2 prestupy $170. Zapísaných 17 letov (7× let1, 10× let2).
 
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
