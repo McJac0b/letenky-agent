@@ -987,3 +987,23 @@ timestamp,let,trasa,datum_letu,aerolinka,cislo_letu,odlet,pristatie,prestupy,cen
 2026-07-23T06:16,let2,FLL-LAS,2026-09-05,JetBlue,,20:44,22:49,nonstop,198,ano,cloud,
 2026-07-23T06:16,let2,FLL-LAS,2026-09-05,Frontier,,15:00,23:10,1 prestup,136,nie,cloud,cez ATL 4h34
 2026-07-23T06:16,let2,FLL-LAS,2026-09-05,JetBlue,,16:15,18:19,nonstop,198,ano,cloud,
+2026-07-23T08:17,let1,EWR-FLL,2026-08-30,JetBlue,,20:46,23:55,nonstop,178,ano,cloud,
+2026-07-23T08:17,let1,EWR-FLL,2026-08-30,United,,20:37,23:50,nonstop,114,nie,cloud,
+2026-07-23T08:17,let1,EWR-MIA,2026-08-30,United,,20:29,23:44,nonstop,184,nie,cloud,
+2026-07-23T08:17,let1,JFK-FLL,2026-08-30,Delta,,19:55,23:25,nonstop,128,ano,cloud,
+2026-07-23T08:17,let1,JFK-FLL,2026-08-30,JetBlue,,20:00,23:23,nonstop,128,ano,cloud,
+2026-07-23T08:17,let1,JFK-MIA,2026-08-30,American,,20:30,23:50,nonstop,184,ano,cloud,
+2026-07-23T08:17,let1,JFK-MIA,2026-08-30,Delta,,19:55,23:37,nonstop,198,ano,cloud,
+2026-07-23T08:17,let1,LGA-FLL,2026-08-30,JetBlue,,20:50,23:59,nonstop,178,ano,cloud,
+2026-07-23T08:17,let1,LGA-FLL,2026-08-30,Delta,,19:29,22:52,nonstop,114,ano,cloud,
+2026-07-23T08:17,let1,LGA-MIA,2026-08-30,American,,19:29,22:45,nonstop,184,ano,cloud,
+2026-07-23T08:17,let1,LGA-MIA,2026-08-30,Delta,,19:50,23:17,nonstop,198,ano,cloud,
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,United,,16:58,22:55,1 prestup,208,nie,cloud,cez SFO 0h56
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,American,,17:40,21:45,1 prestup,208,ano,cloud,cez DFW 0h57
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,United,,15:52,20:51,1 prestup,217,nie,cloud,cez DEN 1h25
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,Southwest,,15:40,20:00,1 prestup,273,ano,cloud,cez BNA 1h00
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,American,,20:20,22:30,nonstop,198,ano,cloud,
+2026-07-23T08:17,let2,MIA-LAS,2026-09-05,Southwest,,14:15,17:45,1 prestup,238,ano,cloud,cez AUS 0h40
+2026-07-23T08:17,let2,FLL-LAS,2026-09-05,JetBlue,,20:44,22:49,nonstop,198,ano,cloud,
+2026-07-23T08:17,let2,FLL-LAS,2026-09-05,Frontier,,15:00,23:10,1 prestup,136,nie,cloud,cez ATL 4h34
+2026-07-23T08:17,let2,FLL-LAS,2026-09-05,JetBlue,,16:15,18:19,nonstop,198,ano,cloud,
