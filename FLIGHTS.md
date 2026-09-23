@@ -263,6 +263,10 @@ Poznámky z 23. 7. 2026 (cloud scan, popoludnie #8, requests+CONSENT cookie pria
 - Let 1: bez zmeny na minimách. Najlacnejší FLL $114 (United EWR 20:37, Delta LGA 19:29, JetBlue LGA 20:50), najlacnejší MIA $184 (United EWR). Zapísaných 11 letov, všetky zodpovedajú registru.
 - Let 2: bez zmeny na minime $136 (Frontier FLL 15:00, 1 prestup cez ATL 4h34) — stále pod prahom $175. Najlacnejší nonstop $198 (JetBlue FLL x2, American MIA). Zapísaných 11 letov.
 
+Poznámka z 23. 9. 2026 (cloud scan — PRESKOČENÝ):
+- Scheduler nebežal ~2 mesiace (posledný scan 23. 7. 2026 18:17Z, ďalší až dnes). Sledované dátumy letov (Let 1: 30. 8. 2026, Let 2: 5. 9. 2026) sú už v minulosti voči dnešnému dátumu (23. 9. 2026) — Google Flights pre ne nevráti platné výsledky, fetch by produkoval nezmyselné/vymyslené dáta. Scan preto vynechaný, do price_log.csv nič nezapísané.
+- Treba: overiť, či si používateľ letenky stihol kúpiť pred termínom, prípadne zastaviť/prekonfigurovať tento scheduled task na nové dátumy, ak ide o budúcu cestu.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
