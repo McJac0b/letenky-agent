@@ -271,6 +271,9 @@ Poznámka z 24. 9. 2026 (cloud scan — opäť PRESKOČENÝ):
 - Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026 a 5. 9. 2026) sú naďalej v minulosti voči dnešku (24. 9. 2026), takže fetch by opäť produkoval nezmyselné dáta. Scan vynechaný druhýkrát po sebe, do price_log.csv nič nezapísané.
 - Task treba buď zastaviť (ak sú letenky už kúpené/cesta sa neuskutoční), alebo preadresovať na nové dátumy budúcej cesty — inak bude každý ďalší beh len opakovane hlásiť to isté.
 
+Poznámka z 24. 9. 2026 (cloud scan #2 — tretíkrát PRESKOČENÝ):
+- Bez zásahu používateľa. Sledované dátumy (30. 8. 2026, 5. 9. 2026) sú stále v minulosti. Scan vynechaný, nič nezapísané. Odoslané upozornenie používateľovi, aby task zastavil alebo preadresoval na nové dátumy.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
