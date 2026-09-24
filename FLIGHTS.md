@@ -277,6 +277,9 @@ Poznámka z 24. 9. 2026 (cloud scan #2 — tretíkrát PRESKOČENÝ):
 Poznámka z 24. 9. 2026 (cloud scan #3 — štvrtýkrát PRESKOČENÝ):
 - Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026, 5. 9. 2026) sú naďalej v minulosti. Scan vynechaný, nič nezapísané. Upozornenie NEBOLO znovu odoslané (rovnaká vec už bola nahlásená vyššie, žiadna nová informácia) — treba počkať na zásah používateľa (zastavenie alebo preadresovanie tasku na budúce dátumy).
 
+Poznámka z 24. 9. 2026 (cloud scan #4 — piatykrát PRESKOČENÝ):
+- Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026, 5. 9. 2026) sú naďalej v minulosti. Scan vynechaný, nič nezapísané. Upozornenie znovu NEODOSLANÉ (rovnaký problém už bol nahlásený, žiadna nová informácia) — čaká sa na zásah používateľa (zastavenie alebo preadresovanie tasku na budúce dátumy).
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
