@@ -267,6 +267,10 @@ Poznámka z 23. 9. 2026 (cloud scan — PRESKOČENÝ):
 - Scheduler nebežal ~2 mesiace (posledný scan 23. 7. 2026 18:17Z, ďalší až dnes). Sledované dátumy letov (Let 1: 30. 8. 2026, Let 2: 5. 9. 2026) sú už v minulosti voči dnešnému dátumu (23. 9. 2026) — Google Flights pre ne nevráti platné výsledky, fetch by produkoval nezmyselné/vymyslené dáta. Scan preto vynechaný, do price_log.csv nič nezapísané.
 - Treba: overiť, či si používateľ letenky stihol kúpiť pred termínom, prípadne zastaviť/prekonfigurovať tento scheduled task na nové dátumy, ak ide o budúcu cestu.
 
+Poznámka z 24. 9. 2026 (cloud scan — opäť PRESKOČENÝ):
+- Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026 a 5. 9. 2026) sú naďalej v minulosti voči dnešku (24. 9. 2026), takže fetch by opäť produkoval nezmyselné dáta. Scan vynechaný druhýkrát po sebe, do price_log.csv nič nezapísané.
+- Task treba buď zastaviť (ak sú letenky už kúpené/cesta sa neuskutoční), alebo preadresovať na nové dátumy budúcej cesty — inak bude každý ďalší beh len opakovane hlásiť to isté.
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
