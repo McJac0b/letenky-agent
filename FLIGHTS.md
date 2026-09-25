@@ -316,6 +316,9 @@ Poznámka z 25. 9. 2026 (cloud scan — šestnástykrát PRESKOČENÝ):
 Poznámka z 25. 9. 2026 (cloud scan — sedemnástykrát PRESKOČENÝ):
 - Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026, 5. 9. 2026) sú naďalej v minulosti voči dnešku. Scan vynechaný, nič nezapísané. Tento cloud task beží ako externý scheduled trigger na claude.ai — z tejto session ho nemožno zastaviť/upraviť (CronList nič nevrátil, ide o iný mechanizmus). Upozornenie znovu NEODOSLANÉ (rovnaký problém, žiadna nová informácia od predošlého odoslaného upozornenia) — treba zásah používateľa priamo v nastaveniach schedulera na claude.ai (zastaviť alebo zmeniť dátumy).
 
+Poznámka z 25. 9. 2026 (cloud scan — osemnástykrát PRESKOČENÝ):
+- Stále bez zásahu používateľa. Sledované dátumy (30. 8. 2026, 5. 9. 2026) sú naďalej v minulosti voči dnešku (25. 9. 2026, beh o ~2h intervale, posledný reálny scan 23. 7. 2026). Scan vynechaný, nič nezapísané. Upozornenie znovu NEODOSLANÉ (rovnaký problém, žiadna nová informácia) — čaká sa na zásah používateľa priamo v nastaveniach schedulera na claude.ai (zastaviť task alebo zmeniť dátumy na budúcu cestu).
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
