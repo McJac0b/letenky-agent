@@ -325,6 +325,8 @@ Poznámka z 26. 9. 2026 (cloud scan — dvadsiatykrát PRESKOČENÝ, bez zmeny):
 
 Poznámka z 26. 9. 2026 (cloud scan — dvadsiatyprvýkrát PRESKOČENÝ, bez zmeny): dátumy letov (30. 8. 2026, 5. 9. 2026) stále v minulosti voči dnešku (posledný reálny scan 23. 7. 2026). Fetch vynechaný, nič nezapísané do price_log.csv. Upozornenie neodoslané (duplicita).
 
+Poznámka z 26. 9. 2026 (cloud scan — dvadsiatydruhýkrát PRESKOČENÝ, bez zmeny): dátumy letov (30. 8. 2026, 5. 9. 2026) stále v minulosti voči dnešku. Pred vynechaním scanu overený priamy fetch (requests+CONSENT+CA bundle aj primp/fast_flights get_flights s exclude_basic_economy=False) — Google Flights vracia pre obe trasy len ErrorResponse (typ.googleapis.com/travel.frontend.flights.ErrorResponse), čo zodpovedá tomu, že dátum letu je v minulosti a vyhľadávanie nie je možné; nešlo o sieťovú/TLS chybu (HTTP 200, plná stránka). Fetch preto opäť vynechaný, nič nezapísané do price_log.csv. Upozornenie neodoslané (duplicita, žiadna nová informácia od predošlého odoslaného upozornenia z 24. 9. 2026) — čaká sa na zásah používateľa priamo v nastaveniach schedulera na claude.ai (zastaviť task alebo presunúť dátumy na budúcu cestu).
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
