@@ -351,6 +351,8 @@ Poznámka z 27. 9. 2026 (cloud scan — tridsiaty­tretíkrát PRESKOČENÝ, bez
 
 Poznámka z 27. 9. 2026 (cloud scan — tridsiaty­štvrtýkrát PRESKOČENÝ, bez zmeny): dátumy letov (30. 8. 2026, 5. 9. 2026) stále v minulosti voči dnešku. Žiadny zásah používateľa v nastaveniach schedulera (task beží nezmenene už 6+ dní od 23. 9., posledný reálny scan 23. 7. 2026, odvtedy 34 po sebe idúcich preskočených behov). Fetch vynechaný, nič nezapísané do price_log.csv. Upozornenie neodoslané (duplicita, žiadna nová informácia od predošlého odoslaného upozornenia z 24. 9. 2026).
 
+Poznámka z 27. 9. 2026 (cloud scan — tridsiaty­piatykrát PRESKOČENÝ, bez zmeny): dátumy letov (30. 8. 2026, 5. 9. 2026) stále v minulosti voči dnešku (16:14+ UTC). Žiadny zásah používateľa v nastaveniach schedulera (task beží nezmenene už 6+ dní od 23. 9., posledný reálny scan 23. 7. 2026, odvtedy 35 po sebe idúcich preskočených behov). Fetch vynechaný, nič nezapísané do price_log.csv. Upozornenie neodoslané (duplicita, žiadna nová informácia od predošlého odoslaného upozornenia z 24. 9. 2026).
+
 ## Pravidlá upozornení
 - Nové minimum v ktorejkoľvek metrike, alebo pokles ≥ 5 % oproti minimu → výrazné upozornenie v reporte + aktualizovať tabuľku miním.
 - Nákupné prahy (cena/os., ktorákoľvek aerolinka): Let 1 pod **$100** (FLL) / pod **$150** (MIA), Let 2 pod **$175** → odporučiť okamžitý nákup.
